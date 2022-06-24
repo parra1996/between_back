@@ -77,27 +77,6 @@ UsuarioController.logUsuario = (req, res) => {
     })
 };
 
-UsuarioController.llamar = async (req,res) => {
  
-    //https://gateway.marvel.com:443/v1/public/characters?apikey=477572bbc4000049e3379ce86acc7407
-
-    // pblic key 477572bbc4000049e3379ce86acc7407
-
-    // private key 6ce65b27416fc388ca7773198ad6aafbab9bb87a
-
-    // ts: 1
-
-    // 16ce65b27416fc388ca7773198ad6aafbab9bb87a477572bbc4000049e3379ce86acc7407
-
-    //hash : 2122799baa4ed02346ae71808f7c6260
-
-    try{
-        let resultado = await axios.get("https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=477572bbc4000049e3379ce86acc7407&hash=2122799baa4ed02346ae71808f7c6260")
-     res.send(resultado.data.data.results)  
-    }catch(error){
-        console.log(error)
-    }
-   
-}   
 
 module.exports = UsuarioController;
