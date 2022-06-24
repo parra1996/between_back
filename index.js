@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 app.use(router);
 
 
-// db.then(()=>{
+db.then(()=>{
     app.listen(PORT, ()=> console.log(`Server on port ${PORT}`));
-// })
-// .catch((err)=> console.log(err.message));  
+})
+.catch((err)=> console.log(err.message));  
