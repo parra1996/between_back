@@ -1,29 +1,14 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Supers', {
+    await queryInterface.createTable('Favs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombre: {
-        type: Sequelize.STRING
-      },
-      descripcion: {
-        type: Sequelize.TEXT
-      },
-      imagen: {
-        type: Sequelize.STRING
-      },
-      extension: {
-        type: Sequelize.STRING
-      },
-      n_comics: {
-        type: Sequelize.INTEGER
-      },
-      comics: {
+      name: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -37,6 +22,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Supers');
+    await queryInterface.dropTable('Favs');
   }
 };

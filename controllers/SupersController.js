@@ -27,25 +27,36 @@ SupersControllers.llamar = async (req,res) => {
         if(resultado.data){
 
             let numbOfResultsPerPageTMDB = resultado.data.data.results.length
+
             for(let i=0; i<numbOfResultsPerPageTMDB ; i++){
                 Super.create({
-                    //A la izquierda mis campos de mi BBDD
-                    //A la derecha los campos que devuelve TMDB
                     nombre: resultado.data.data.results[i].name,
                     descripcion: resultado.data.data.results[i].description,
                     imagen: resultado.data.data.results[i].thumbnail?.path,
-                    extension: resultado.data.data.results[i].thumbnail?.extension
-                })
+                    extension: resultado.data.data.results[i].thumbnail?.extension,
+                    n_comics: resultado.data.data.results[i].comics?.items?.length,
+                    comics: resultado.data.data.results[i].comics?.items[i]?.name,
+            })
             }
+           return( "Se han cargado los datos")
         }else {
-            res.send("hubo un error al traer los supers")
+            return("hubo un error al traer los supers")
         }
         
     } catch (error) {
-        console.log(error)
+        console.log(error) 
     }
 
 }
+
+SupersControllers.getAll =  (req,res) => {
+    Super.findAll()
+    .then(data => {
+
+        res.send(data)
+    });
+}
+
 
 
 
