@@ -25,6 +25,32 @@ FavsControllers.nuevo_fav =  (req,res) => {
     }))
 }
 
+FavsControllers.eliminar_fav =  (req,res) => {
+
+    let id = req.params.id;
+
+    try {
+
+        Fav.destroy({
+            where : { id : id },
+            truncate : false
+        })
+        .then(favEliminado => {
+            console.log(favEliminado);
+            res.send(`El fav con la id  ${id} ha sido eliminado`);
+        })
+
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+FavsControllers.getAll =  (req,res) => {
+    Fav.findAll()
+    .then(data => {
+        res.send(data)
+    });
+}
 
 
 module.exports = FavsControllers;
