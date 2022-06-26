@@ -57,7 +57,4 @@ SupersControllers.getAll =  (req,res) => {
     });
 }
 
-
-
-
 module.exports = SupersControllers;
