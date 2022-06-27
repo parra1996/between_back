@@ -21,8 +21,9 @@ SupersControllers.llamar = async (req,res) => {
     //hash : 2122799baa4ed02346ae71808f7c6260
 
     try {
+        //https://gateway.marvel.com:443/v1/public/characters?limit=40&apikey=477572bbc4000049e3379ce86acc7407
 
-        let resultado = await axios.get("https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=477572bbc4000049e3379ce86acc7407&hash=2122799baa4ed02346ae71808f7c6260")
+        let resultado = await axios.get("https://gateway.marvel.com:443/v1/public/characters?limit=40&ts=1&apikey=477572bbc4000049e3379ce86acc7407&hash=2122799baa4ed02346ae71808f7c6260")
         
         if(resultado.data){
 

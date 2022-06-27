@@ -52,5 +52,18 @@ FavsControllers.getAll =  (req,res) => {
     });
 }
 
+FavsControllers.getbyid = async (req,res) => {
+    let id = req.params.id
+    let consulta = `SELECT usuarios.nombre AS nombre, supers.nombre AS nombre , favs.id AS id,  usuarios.usuario AS usuario
+    FROM usuarios INNER JOIN favs 
+    ON usuarios.id = favs.usuarioId INNER JOIN supers
+    ON supers.id = favs.superId WHERE usuarios.id = ${id}`;
+    let resultado = await Fav.sequelize.query(consulta,{
+        type: Fav.sequelize.QueryTypes.SELECT});
+    if(resultado){
+        res.send(resultado);
+    }
+}
+
 
 module.exports = FavsControllers;

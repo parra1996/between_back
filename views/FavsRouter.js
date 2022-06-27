@@ -10,4 +10,6 @@ router.delete('/:id', FavsController.eliminar_fav);
 
 router.get('/', FavsController.getAll);
 
+router.get('/:id', FavsController.getbyid);
+
 module.exports = router;
