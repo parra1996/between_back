@@ -1,10 +1,10 @@
 const { Fav} = require('../models/index');
-// const {Op} = require("sequelize");
+const {Op} = require("sequelize");
 const {default: axios} = require('axios');
 
 const FavsControllers = {};
 
-FavsControllers.nuevo_fav =  (req,res) => {
+FavsControllers.nuevo_fav =  async (req,res) => {
     let body = req.body;
 
     console.log("este es body",body)
@@ -17,7 +17,7 @@ FavsControllers.nuevo_fav =  (req,res) => {
         if(favorito){
             res.send(favorito)
         }else{
-            res.send("le has dado a favorito");
+            res.send("hubo un problema al darle favorito");
         }
     })
     .catch((error => {
@@ -52,7 +52,7 @@ FavsControllers.getAll =  (req,res) => {
     });
 }
 
-FavsControllers.getbyid = async (req,res) => {
+FavsControllers.get_by_id = async (req,res) => {
     let id = req.params.id
     let consulta = `SELECT usuarios.nombre AS nombre, supers.nombre AS nombre , favs.id AS id,  usuarios.usuario AS usuario
     FROM usuarios INNER JOIN favs 

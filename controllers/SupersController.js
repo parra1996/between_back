@@ -35,7 +35,6 @@ SupersControllers.llamar = async (req,res) => {
                     descripcion: resultado.data.data.results[i].description,
                     imagen: resultado.data.data.results[i].thumbnail?.path,
                     extension: resultado.data.data.results[i].thumbnail?.extension,
-                    n_comics: resultado.data.data.results[i].comics?.items?.length,
                     comics: resultado.data.data.results[i].comics?.items[i]?.name,
             })
             }
